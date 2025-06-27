@@ -46,7 +46,5 @@ ONAM FORMU:
 SORU:
 ... (kullanıcının sorusu)
 
----
 
-##
 
