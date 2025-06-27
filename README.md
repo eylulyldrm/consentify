@@ -12,12 +12,12 @@ Bu proje, hastalar için **onam formlarını sade bir dille açıklamak** için 
 
 ## 
 
-|------------------|----------|
-| **FastAPI**      | Python tabanlı web framework (API oluşturmak için kullanıldı) |
-| **Gemini 1.5 Flash** | Google'ın ücretsiz dil modeli (model ile kullanıcı sorusuna cevap üretiliyor) |
-| **Python 3.10+** | Tüm uygulama Python ile yazıldı |
-| **dotenv**       | API anahtarlarını yönetmek için |
-| **curl**         | API'yi test etmek için |
+
+ **FastAPI**      | Python tabanlı web framework (API oluşturmak için kullanıldı) |
+ **Gemini 1.5 Flash** | Google'ın ücretsiz dil modeli (model ile kullanıcı sorusuna cevap üretiliyor) |
+ **Python 3.10+** | Tüm uygulama Python ile yazıldı |
+ **dotenv**       | API anahtarlarını yönetmek için |
+ **curl**         | API'yi test etmek için |
 
 ---
 
@@ -39,5 +39,6 @@ ONAM FORMU:
 SORU:
 ... (kullanıcının sorusu)
 
-#
+### NOT
+
 Bu proje bir sağlık danışmanı yerine geçmez. Amaç, hastaların tıbbi belgeleri daha iyi anlamasını desteklemektir. Geliştirme süreci devam etmektedir.
