@@ -4,6 +4,13 @@ Bu proje, hastalar için **onam formlarını sade bir dille açıklamak** için 
 
 ---
 
+
+### NOT
+
+Bu proje bir sağlık danışmanı yerine geçmez. Amaç, hastaların tıbbi belgeleri daha iyi anlamasını desteklemektir. Geliştirme süreci devam etmektedir.
+
+---
+
 ## Amaç
 
 - Her ameliyat için özel hazırlanmış onam metinlerinden, kullanıcı sorusuna uygun olan bilgiyi çıkarmak ve Onam formlarındaki tıbbi terimlerin, hastalar tarafından kolayca anlaşılmasını sağlamak 
@@ -43,6 +50,3 @@ SORU:
 
 ##
 
-### NOT
-
-Bu proje bir sağlık danışmanı yerine geçmez. Amaç, hastaların tıbbi belgeleri daha iyi anlamasını desteklemektir. Geliştirme süreci devam etmektedir.
