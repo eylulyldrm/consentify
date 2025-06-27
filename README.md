@@ -39,6 +39,8 @@ ONAM FORMU:
 SORU:
 ... (kullanıcının sorusu)
 
+---
+
 ### NOT
 
 Bu proje bir sağlık danışmanı yerine geçmez. Amaç, hastaların tıbbi belgeleri daha iyi anlamasını desteklemektir. Geliştirme süreci devam etmektedir.
