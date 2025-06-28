@@ -3,6 +3,107 @@ from pydantic import BaseModel
 from dotenv import load_dotenv
 from pathlib import Path
 import os
+import traceback
+
+import google.generativeai as genai
+from embed_utils import tum_pdfleri_embedding_yap, pdf_metnini_oku, metni_embedding_uret
+from similarity_utils import en_yakin_pdfyi_bul
+
+# .env yükle
+env_path = Path(__file__).resolve().parent / ".env"
+load_dotenv(dotenv_path=env_path)
+
+api_key = os.getenv("GEMINI_API_KEY")
+print("API key yüklendi mi:", bool(api_key))
+
+app = FastAPI()
+
+class Soru(BaseModel):
+    soru: str
+
+# PDF klasör yolu
+PDF_KLASOR = "./onam"  # Buraya sen kendi PDF klasör yolunu yazabilirsin
+
+# PDF içerikleri ve embedding'lerini başta yükle
+print("PDF embeddingleri hazırlanıyor...")
+pdf_icerikleri, pdf_embeddings = tum_pdfleri_embedding_yap(PDF_KLASOR, api_key)
+print(f"Toplam {len(pdf_icerikleri)} PDF embedding hazır.")
+
+@app.post("/soru-sor")
+async def soru_sor(soru: Soru):
+    try:
+        if not api_key:
+            return {"hata": "API anahtarı eksik. .env dosyasını kontrol et."}
+
+        genai.configure(api_key=api_key)
+        model = genai.GenerativeModel("models/gemini-1.5-flash")
+
+        # Kullanıcı sorusunun embedding'ini üret
+        soru_embedding = metni_embedding_uret(soru.soru, api_key)
+
+        # En uygun PDF'yi bul
+        secilen_pdf = en_yakin_pdfyi_bul(soru_embedding, pdf_embeddings, pdf_icerikleri)
+
+        # Prompt hazırla
+        prompt = f"""
+Sen bir sağlık danışmanısın. Aşağıdaki ameliyat onam formuna göre, hastanın sorusuna sade, açık ve korkutmadan cevap ver.
+
+ONAM FORMU:
+{secilen_pdf['metin']}
+
+SORU:
+{soru.soru}
+"""
+
+        chat = model.start_chat()
+        yanit = chat.send_message(prompt)
+        return {
+            "cevap": yanit.text,
+            "secili_dosya": secilen_pdf['dosya']
+        }
+
+    except Exception as e:
+        print("❗ HATA:", str(e))
+        traceback.print_exc()
+        return {"hata": str(e)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''from fastapi import FastAPI
+from pydantic import BaseModel
+from dotenv import load_dotenv
+from pathlib import Path
+import os
 import google.generativeai as genai
 import traceback
 
@@ -64,6 +165,5 @@ async def list_models():
     except Exception as e:
         print("❗ HATA:", str(e))
         traceback.print_exc()
-        return {"hata": str(e)}
-
+        return {"hata": str(e) '''
 
