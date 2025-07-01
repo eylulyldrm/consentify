@@ -9,7 +9,6 @@ import google.generativeai as genai
 from embed_utils import tum_pdfleri_embedding_yap, pdf_metnini_oku, metni_embedding_uret
 from similarity_utils import en_yakin_pdfyi_bul
 
-# .env yükle
 env_path = Path(__file__).resolve().parent / ".env"
 load_dotenv(dotenv_path=env_path)
 
@@ -20,11 +19,8 @@ app = FastAPI()
 
 class Soru(BaseModel):
     soru: str
+PDF_KLASOR = "./onam"  # Buraya  kendi PDF klasör yolumu yazmıştım
 
-# PDF klasör yolu
-PDF_KLASOR = "./onam"  # Buraya sen kendi PDF klasör yolunu yazabilirsin
-
-# PDF içerikleri ve embedding'lerini başta yükle
 print("PDF embeddingleri hazırlanıyor...")
 pdf_icerikleri, pdf_embeddings = tum_pdfleri_embedding_yap(PDF_KLASOR, api_key)
 print(f"Toplam {len(pdf_icerikleri)} PDF embedding hazır.")
@@ -38,15 +34,14 @@ async def soru_sor(soru: Soru):
         genai.configure(api_key=api_key)
         model = genai.GenerativeModel("models/gemini-1.5-flash")
 
-        # Kullanıcı sorusunun embedding'ini üret
         soru_embedding = metni_embedding_uret(soru.soru, api_key)
 
-        # En uygun PDF'yi bul
+    
         secilen_pdf = en_yakin_pdfyi_bul(soru_embedding, pdf_embeddings, pdf_icerikleri)
 
-        # Prompt hazırla
+        
         prompt = f"""
-Sen bir sağlık danışmanısın. Aşağıdaki ameliyat onam formuna göre, hastanın sorusuna sade, açık ve korkutmadan cevap ver.
+Sen bir sağlık danışmanısın. Aşağıdaki ameliyat onam formuna göre, hastanın sorusuna sade, açık ve mantıklı cevap ver.
 
 ONAM FORMU:
 {secilen_pdf['metin']}
