@@ -58,7 +58,7 @@ SORU:
         }
 
     except Exception as e:
-        print("❗ HATA:", str(e))
+        print("HATA:", str(e))
         traceback.print_exc()
         return {"hata": str(e)}
 
