@@ -7,10 +7,7 @@ def cosine_similarity(vec1, vec2):
     return np.dot(vec1, vec2) / (np.linalg.norm(vec1) * np.linalg.norm(vec2))
 
 def en_yakin_pdfyi_bul(soru_embedding, pdf_embedding_list, pdf_icerikleri):
-    """
-    Kullanıcı sorusunun embedding'i ile PDF embedding'lerini karşılaştırır.
-    En yüksek benzerlik skoruna sahip PDF metnini döner.
-    """
+
     max_sim = -1
     secilen_index = -1
     for i, pdf_emb in enumerate(pdf_embedding_list):
