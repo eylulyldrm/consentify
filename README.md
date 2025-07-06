@@ -45,6 +45,29 @@ ONAM FORMU:
 
 SORU:
 ... (kullanıcının sorusu)
+---
+
+![image](https://github.com/user-attachments/assets/419a6ab8-cc59-4b99-a447-33df43d2a667)
 
 
 
+###Expected Point Completion within Sprint:
+Bu sprintte tamamlanması hedeflenen toplam puan: 200 Point
+
+### Point Completion Logic:
+Proje genelinde toplam 1000 puanlık iş yükü planlandı.
+
+İlk sprintte fikir geliştirme, tasarım ve planlama aşamaları için 200 puanlık hedef belirlendi.
+
+İkinci sprintte geliştirme ve API entegrasyonu için 400 puan hedefleniyor.
+
+Üçüncü sprintte kalan geliştirme, test ve entegrasyon işleri için 400 puanlık hedef planlandı.
+
+
+### Daily Scrum:
+Jira üzerinden günlük görev takibi yapılacak.
+
+Haberleşme ve günlük durum raporları WhatsApp grubundan paylaşılacak.
+
+### Sprint Toplantılarına katılanlar;
+Mehmet Lafcı,  Ömer Faruk Asker, Sena Abasız,Eylül Durdane Yıldırım
