@@ -37,6 +37,14 @@ Kullanıcı bir soru sorar (örneğin:
 ###  Prompt Oluşturma
 Soru ve ilgili onam formu bir araya getirilerek Gemini’ye verilecek “prompt” hazırlanır.
 
+
+### 3. Cevap Üretme
+
+Model, onam formuna göre kullanıcıya uygun, anlaşılır ve güven verici bir cevap üretir.
+
+---
+
+
 ```text
 Sen bir sağlık danışmanısın. Aşağıdaki onam formuna göre, hastanın sorusuna sade, açık ve korkutmadan cevap ver.
 
@@ -45,6 +53,7 @@ ONAM FORMU:
 
 SORU:
 ... (kullanıcının sorusu)
+```
 ---
 
 ![image](https://github.com/user-attachments/assets/419a6ab8-cc59-4b99-a447-33df43d2a667)
